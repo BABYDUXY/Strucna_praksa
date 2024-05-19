@@ -1,17 +1,4 @@
-table{
-    background:rgb(255, 255, 255);
-    
-}
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-
-tr:nth-child(odd){
-    background:rgb(187, 217, 222);
-}
-
-td{
-    padding:10px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

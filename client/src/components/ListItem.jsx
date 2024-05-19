@@ -1,5 +1,4 @@
 import React from 'react'
-
 function ListItem({value}) {
     let atributes=[
         'ime',
@@ -13,20 +12,22 @@ function ListItem({value}) {
         'otrovna'
     ]
 
+
+    // <td>{value.ostali_nazivi}</td>
+    // <td>{value.lat_ime}</td>
+    // <td>{value.vrsta}</td>
+    // <td>{value.min_dubina}</td>
+    // <td>{value.max_dubina}</td>
+    // <td>{value.max_duljina}</td>
+    // <td>{value.max_tezina}</td>
+    // <td>{value.otrovna}</td>
+
     console.log(value)
     return (
-    <tr>
-       <td>{value.ime}</td>
-       <td>{value.ostali_nazivi}</td>
-       <td>{value.lat_ime}</td>
-       <td>{value.vrsta}</td>
-       <td>{value.min_dubina}</td>
-       <td>{value.max_dubina}</td>
-       <td>{value.max_duljina}</td>
-       <td>{value.max_tezina}</td>
-       <td>{value.otrovna}</td>
-
-    </tr>
+    <div class="w-[20rem] h-32 bg-green-600 justify-self-center flex  items-end justify-center rounded-lg hover:scale-y-125 group transition-all ease-in-out duration-300 hover:border">
+       <h2 class="group-hover:scale-y-100 group-hover:font-bold">{value.ime} id: {value.ID}</h2>
+       
+    </div>
   )
 }
 
