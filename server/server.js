@@ -1,15 +1,25 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
+// importing enviromental variables
+const host = process.env.HOST;
+const user = process.env.USER;
+const password = process.env.PASSWORD;
+const database = process.env.DATABASE;
+
+console.log(host);
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "prava_ribe_jadrana",
+  host: host,
+  user: user,
+  password: password,
+  database: database,
 });
 
 // prettier-ignore

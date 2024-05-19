@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
+import './App.css';
+import ListItem from './components/ListItem';
 const App = () => {
+  const urlApi='http://localhost:5000/api';
   const [backendData, setBackendData] = useState([{}])
   useEffect(() => {
-    fetch('http://localhost:5000/api')
+    fetch(urlApi)
       .then( res => res.json())
       .then((data) => {
         setBackendData(data)
-        console.log(data)
       })
   }, [])
   return (
-    <div>
+    
+    <table>
       {(typeof backendData === 'undefined')?(<p>Loading...</p>):(
-        backendData.map((riba)=>(
-          <p>{riba.ime}</p>
+        backendData.map((riba, i)=>(
+          <ListItem key={i} value={riba}/>
         ))
       )}
-      </div>
+    </table>
   );
 };
 export default App;
