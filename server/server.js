@@ -32,6 +32,14 @@ app.get("/api", (req, res) => {
 
 })
 
+app.get("/plave", (req, res) => {
+  const sql = "SELECT * FROM ribe WHERE vrsta = 'plava' ";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
 app.listen(5000, () => {
   console.log("server je pokrenut na portu 5000");
 });
