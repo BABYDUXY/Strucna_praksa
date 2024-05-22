@@ -3,7 +3,7 @@ import './output.css';
 import SveRibe from './components/SveRibe';
 import FilterButtons from './components/FilterButtons';
 const App = () => {
-  const [url, setUrl]=useState('http://localhost:5000/api');
+  const [url, setUrl]=useState('http://localhost:5000/');
   const [backendData, setBackendData] = useState([{}])
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const App = () => {
     
   return (
     <>
-    <h1 class="text-5xl text-center mt-[5vh] mb-32">Ribe Jadrana</h1>
+    <h1 class="text-5xl text-center mt-14 mb-20">Ribe Jadrana</h1>
     <FilterButtons setUrl={setUrl}/>
     <SveRibe backEndData={backendData}/>
     </>

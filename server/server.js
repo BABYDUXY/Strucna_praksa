@@ -23,7 +23,7 @@ const db = mysql.createConnection({
 });
 
 // prettier-ignore
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   const sql = "SELECT * FROM ribe";
   db.query(sql,(err,data)=>{
     if (err) return res.json(err);
@@ -34,6 +34,38 @@ app.get("/api", (req, res) => {
 
 app.get("/plave", (req, res) => {
   const sql = "SELECT * FROM ribe WHERE vrsta = 'plava' ";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.get("/bijele", (req, res) => {
+  const sql = "SELECT * FROM ribe WHERE vrsta = 'bijela' ";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.get("/tezinaASC", (req, res) => {
+  const sql = "SELECT * FROM ribe ORDER BY max_tezina";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.get("/tezinaDESC", (req, res) => {
+  const sql = "SELECT * FROM ribe ORDER BY max_tezina DESC";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
+app.get("/otrovne", (req, res) => {
+  const sql = "SELECT * FROM ribe WHERE otrovna = 1";
   db.query(sql, (err, data) => {
     if (err) return res.json(err);
     return res.json(data);

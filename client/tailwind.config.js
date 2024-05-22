@@ -2,7 +2,21 @@
 export default {
   content: ["src/**/*.{html,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        spawn: {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        spawn: "spawn 300ms ease-in 200ms forwards",
+      },
+    },
   },
   plugins: [],
 };
