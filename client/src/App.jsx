@@ -1,16 +1,32 @@
 import { useState, useEffect } from 'react';
 import './output.css';
-import SveRibe from './components/SveRibe';
-import FilterButtons from './components/FilterButtons';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import SpecificFish from './page/SpecificFish';
+import MainPage from './page/MainPage';
 const App = () => {
   const [url, setUrl]=useState('http://localhost:5000/');
-  const [backendData, setBackendData] = useState([{}])
+  const [backendData, setBackendData] = useState([{}]);
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainPage/>,
+    },
+    {
+      path: "/fish/:id",
+      element: <SpecificFish data={backendData}/>,
+    },
+  ]);
 
-    useEffect(() => {
+
+  
+
+    useEffect(() => { 
       fetch(url)
         .then( res => res.json())
         .then((data) => {
           setBackendData(data);
+          console.log(data);
         })
         
     }, [url])
@@ -18,10 +34,7 @@ const App = () => {
 
     
   return (
-    <>
-    <h1 class="text-5xl text-center mt-14 mb-20">Ribe Jadrana</h1>
-    <FilterButtons setUrl={setUrl}/>
-    <SveRibe backEndData={backendData}/>
+    <><RouterProvider router={router} />
     </>
   );
 };
