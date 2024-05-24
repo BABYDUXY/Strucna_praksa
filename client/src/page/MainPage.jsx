@@ -18,7 +18,7 @@ function MainPage() {
     }, [url])
   return (
     <>
-    <h1 class="text-5xl text-center mt-14 mb-20">Ribe Jadrana</h1>
+    <h1 className="mb-20 text-5xl text-center mt-14">Ribe Jadrana</h1>
     <FilterButtons setUrl={setUrl}/>
     <SveRibe backEndData={backendData}/>
     </>

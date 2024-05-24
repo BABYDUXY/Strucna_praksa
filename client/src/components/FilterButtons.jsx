@@ -25,7 +25,7 @@ function FilterButtons({ setUrl }) {
           </button>
           <div class=" opacity-0 flex w-0 overflow-hidden group-hover:w-auto group-hover:opacity-100 flex-col absolute z-50 bg-white transition-all duration-300 ease-in-out [&>*]:transition-colors [&>*]:duration-300 [&>*]:ease-in-out">
             <button
-              class=" hover:bg-slate-300 p-[0.5rem_1rem] border border-black"
+              class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/plave");
                 setFilter("Plave");
@@ -34,7 +34,7 @@ function FilterButtons({ setUrl }) {
               Plave
             </button>
             <button
-              class=" hover:bg-slate-300 p-[0.5rem_1rem] border border-black"
+              class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/bijele");
                 setFilter("Bijele");
@@ -43,7 +43,7 @@ function FilterButtons({ setUrl }) {
               Bijele
             </button>
             <button
-              class=" hover:bg-slate-300 p-[0.5rem_1rem] border border-black"
+              class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/otrovne");
                 setFilter("otrovne");
@@ -62,7 +62,7 @@ function FilterButtons({ setUrl }) {
           </button>
           <div class=" opacity-0 flex w-0 overflow-hidden group-hover:w-auto group-hover:opacity-100 flex-col absolute z-50 bg-white transition-all duration-300 ease-in-out [&>*]:transition-colors [&>*]:duration-300 [&>*]:ease-in-out">
             <button
-              class=" hover:bg-slate-300 p-[0.5rem_1rem] border border-black"
+              class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/tezinaASC");
                 setFilter("Tezina A-Z");
@@ -71,7 +71,7 @@ function FilterButtons({ setUrl }) {
               A-Z
             </button>
             <button
-              class=" hover:bg-slate-300 p-[0.5rem_1rem] border border-black"
+              class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/tezinaDESC");
                 setFilter("Tezina Z-A");

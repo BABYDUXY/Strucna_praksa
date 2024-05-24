@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import FishAllInfo from '../components/FishAllInfo';
 
 function SpecificFish({data}) {
 
@@ -10,10 +11,10 @@ function SpecificFish({data}) {
     {data.map((riba)=>( 
       (riba.ID == params.id)?(
       
-      <h1>{riba.ime}</h1>
+      <FishAllInfo value={riba}/>
 
     ):""
-  ))};
+  ))}
     
     </>
   )
