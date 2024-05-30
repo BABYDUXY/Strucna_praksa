@@ -72,6 +72,14 @@ app.get("/otrovne", (req, res) => {
   });
 });
 
+app.get("/broj", (req, res) => {
+  const sql = "SELECT COUNT(ID) FROM ribe";
+  db.query(sql, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
+
 app.listen(5000, () => {
   console.log("server je pokrenut na portu 5000");
 });

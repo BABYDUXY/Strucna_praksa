@@ -12,7 +12,7 @@ function MainPage() {
         .then( res => res.json())
         .then((data) => {
           setBackendData(data);
-          console.log(data);
+          
         })
         
     }, [url])

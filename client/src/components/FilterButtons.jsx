@@ -1,11 +1,30 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function FilterButtons({ setUrl }) {
   const [filter,setFilter]=useState("");
 
+  const [broj ,SetBroj]=useState(0);
+  useEffect(() => { 
+  fetch("http://localhost:5000/broj")
+  .then( res => res.json())
+  .then((data) => {
+    SetBroj(data[0]["COUNT(ID)"]);
+  })
+},[]);
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+
+const rand = getRandomInt(1, broj);
+
   return (
     <div class="w-full h-min grid grid-cols-[20%_1fr_20%] relative items-center ">
-      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (''):("Filter:") } {filter}</h2>
+      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (''):(`Filter:`) }{(filter =='') ? (''):(<span className=" text-base border border-black rounded-lg w-min p-[0.2rem_0.6rem] text-center ml-2">{filter}</span>) }</h2>
       <ul class="col-start-2 mb-10 row-start-1 overflow-hidden [&>li]:inline-block justify-self-center self-center h-min">
         <li>
           <button
@@ -46,7 +65,7 @@ function FilterButtons({ setUrl }) {
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/otrovne");
-                setFilter("otrovne");
+                setFilter("Otrovne");
               }}
             >
               Otrovne
@@ -65,7 +84,7 @@ function FilterButtons({ setUrl }) {
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/tezinaASC");
-                setFilter("Tezina A-Z");
+                setFilter("Težina A-Z");
               }}
             >
               A-Z
@@ -74,13 +93,21 @@ function FilterButtons({ setUrl }) {
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
                 setUrl("http://localhost:5000/tezinaDESC");
-                setFilter("Tezina Z-A");
+                setFilter("Težina Z-A");
               }}
             >
               Z-A
             </button>
           </div>
         </li>
+        <li class="group">
+          <Link
+            class="transition-all duration-200 ease-in-out rounded-md group-hover:p-[0.5rem_1.5rem] p-[0.5rem_1rem] border border-black"
+            to={`/fish/${rand}`}
+            >
+            Random
+          </Link>
+          </li>
       </ul>
     </div>
   );
