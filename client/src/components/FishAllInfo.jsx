@@ -1,13 +1,24 @@
 import React from 'react'
+import {useContext } from "react";
 import { Link } from 'react-router-dom'
+import { RandContext } from "../App";
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 function FishAllInfo({value}) {
+
+  const broj =useContext(RandContext);
+  const rand = getRandomInt(1, broj);
   return (
     <div className=" w-screen min-h-screen grid grid-rows-[repeat(10,10%);] grid-cols-[15%_1fr_15%]">
         <Link to="/" className='hover:cursor-default w-min h-min'><img className='m-10 transition-all duration-200 ease-in-out hover:cursor-pointer -scale-x-100 hover:-translate-y-1 hover:-scale-x-110 hover:scale-y-110' src="../img/arrow.png" alt="" /></Link>
         <Link
             class="w-max  h-min col-start-1 m-10"
-            to={`/fish/`}
+            to={`/fish/${rand}`}
             >
             <img src="../img/dice.png" className='transition-all duration-200 ease-in-out hover:-translate-y-1 hover:scale-110' alt="" />
           </Link>

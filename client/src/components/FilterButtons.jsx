@@ -1,17 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
-function FilterButtons({ setUrl }) {
-  const [filter,setFilter]=useState("");
-
-  const [broj ,SetBroj]=useState(0);
-  useEffect(() => { 
-  fetch("http://localhost:5000/broj")
-  .then( res => res.json())
-  .then((data) => {
-    SetBroj(data[0]["COUNT(ID)"]);
-  })
-},[]);
+import { RandContext } from "../App";
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -19,24 +8,18 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+function FilterButtons({ setUrl }) {
+  const [filter,setFilter]=useState("");
+  const broj =useContext(RandContext);
+  const rand = getRandomInt(1, broj);
 
-const rand = getRandomInt(1, broj);
+  
 
   return (
     <div class="w-full h-min grid grid-cols-[20%_1fr_20%] relative items-center ">
-      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (''):(`Filter:`) }{(filter =='') ? (''):(<span className=" text-base border border-black rounded-lg w-min p-[0.2rem_0.6rem] text-center ml-2">{filter}</span>) }</h2>
+      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (setUrl("http://localhost:5000/")):(`Filter:`) }{(filter =='') ? (''):(<Link onClick={()=>{
+                setFilter("");}} className=" text-base border border-black rounded-lg w-min p-[0.2rem_0.6rem] text-center ml-2">{filter}</Link>) }</h2>
       <ul class="col-start-2 mb-10 row-start-1 overflow-hidden [&>li]:inline-block justify-self-center self-center h-min">
-        <li>
-          <button
-            class="transition-all duration-200 ease-in-out hover:p-[0.5rem_1.5rem] rounded-md p-[0.5rem_1rem] border border-black"
-            onClick={() => {
-              setUrl("http://localhost:5000/");
-              setFilter("");
-            }}
-          >
-            Sve
-          </button>
-        </li>
 
         <li class="group">
           <button class="transition-all duration-200 ease-in-out group-hover:p-[0.5rem_1.5rem] rounded-md p-[0.5rem_1rem] border border-black ">
