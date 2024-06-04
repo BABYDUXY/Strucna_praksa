@@ -2,22 +2,21 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { RandContext } from "../App";
 
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-function FilterButtons({ setUrl }) {
+function FilterButtons({ endpointUrl, setUrl }) {
   const [filter,setFilter]=useState("");
   const broj =useContext(RandContext);
   const rand = getRandomInt(1, broj);
 
-  
-
   return (
     <div class="w-full h-min grid grid-cols-[20%_1fr_20%] relative items-center ">
-      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (setUrl("http://localhost:5000/")):(`Filter:`) }{(filter =='') ? (''):(<Link onClick={()=>{
+      <h2 class="text-xl col-start-2 row-start-1">{(filter =='') ? (setUrl(endpointUrl)):(`Filter:`) }{(filter =='') ? (''):(<Link onClick={()=>{
                 setFilter("");}} className=" text-base border border-black rounded-lg w-min p-[0.2rem_0.6rem] text-center ml-2">{filter}</Link>) }</h2>
       <ul class="col-start-2 mb-10 row-start-1 overflow-hidden [&>li]:inline-block justify-self-center self-center h-min">
 
@@ -29,7 +28,7 @@ function FilterButtons({ setUrl }) {
             <button
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
-                setUrl("http://localhost:5000/plave");
+                setUrl(`${endpointUrl}/plave`);
                 setFilter("Plave");
               }}
             >
@@ -38,7 +37,7 @@ function FilterButtons({ setUrl }) {
             <button
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
-                setUrl("http://localhost:5000/bijele");
+                setUrl(`${endpointUrl}/bijele`);
                 setFilter("Bijele");
               }}
             >
@@ -47,7 +46,7 @@ function FilterButtons({ setUrl }) {
             <button
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
-                setUrl("http://localhost:5000/otrovne");
+                setUrl(`${endpointUrl}/otrovne`);
                 setFilter("Otrovne");
               }}
             >
@@ -66,7 +65,7 @@ function FilterButtons({ setUrl }) {
             <button
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
-                setUrl("http://localhost:5000/tezinaASC");
+                setUrl(`${endpointUrl}/tezinaASC`);
                 setFilter("Težina A-Z");
               }}
             >
@@ -75,7 +74,7 @@ function FilterButtons({ setUrl }) {
             <button
               class=" hover:bg-blue-200 p-[0.5rem_1rem] border border-black"
               onClick={() => {
-                setUrl("http://localhost:5000/tezinaDESC");
+                setUrl(`${endpointUrl}/tezinaDESC`);
                 setFilter("Težina Z-A");
               }}
             >

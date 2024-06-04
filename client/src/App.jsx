@@ -1,23 +1,28 @@
-import { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './output.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import SpecificFish from './page/SpecificFish';
 import MainPage from './page/MainPage';
+
+
 
 export const RandContext = createContext();
 
 
 
 const App = () => {
-  const [url, setUrl]=useState('http://localhost:5000/');
+  const endpointUrl="https://ribejadrana-backend.onrender.com";
+  const [url, setUrl]=useState(endpointUrl);
   const [backendData, setBackendData] = useState([{}]);
   const [broj ,SetBroj]=useState(0);
+
+  
   
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <RandContext.Provider value={broj}><MainPage backendData={backendData} setUrl={setUrl}/></RandContext.Provider>,
+      element: <RandContext.Provider value={broj}><MainPage backendData={backendData} endpointUrl={endpointUrl} setUrl={setUrl}/></RandContext.Provider>,
     },
     {
       path: "/fish/:id",
@@ -27,7 +32,7 @@ const App = () => {
 
   
   useEffect(() => { 
-  fetch("http://localhost:5000/broj")
+  fetch(`${endpointUrl}/broj`)
   .then( res => res.json())
   .then((data) => {
     SetBroj(data[0]["COUNT(ID)"]);
